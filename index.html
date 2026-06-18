@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>缅因猫 · 温柔的巨人 | Maine Coon</title>
     <style>
         :root {
@@ -45,7 +46,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ============ 导航栏 ============ */
         .navbar {
             position: fixed;
             top: 0;
@@ -59,12 +59,10 @@
             transition: var(--transition);
             padding: 0 2rem;
         }
-
         .navbar.scrolled {
             box-shadow: var(--shadow-sm);
             background: rgba(253, 246, 236, 0.94);
         }
-
         .nav-inner {
             max-width: 1200px;
             margin: 0 auto;
@@ -73,7 +71,6 @@
             justify-content: space-between;
             height: 66px;
         }
-
         .nav-logo {
             display: flex;
             align-items: center;
@@ -103,7 +100,6 @@
                 transform: translateY(-4px);
             }
         }
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -166,7 +162,6 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* ============ 英雄区域 ============ */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -200,7 +195,6 @@
             border-radius: 50%;
             pointer-events: none;
         }
-
         .hero-content {
             position: relative;
             z-index: 2;
@@ -309,8 +303,6 @@
                 transform: translateY(-20px) rotate(0.5deg);
             }
         }
-
-        /* 爪印装饰 */
         .paw-prints {
             position: absolute;
             pointer-events: none;
@@ -351,7 +343,6 @@
             }
         }
 
-        /* ============ 通用区块 ============ */
         .section {
             padding: 5rem 2rem;
             max-width: 1100px;
@@ -388,7 +379,6 @@
             font-size: 1.05rem;
         }
 
-        /* ============ 关于区块 ============ */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -460,7 +450,6 @@
             margin-top: 2px;
         }
 
-        /* ============ 特征卡片 ============ */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -499,7 +488,6 @@
             line-height: 1.5;
         }
 
-        /* ============ 图库 ============ */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -547,7 +535,6 @@
             transform: translateY(0);
         }
 
-        /* ============ 护理指南 ============ */
         .care-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -583,7 +570,6 @@
             font-size: 0.9rem;
         }
 
-        /* ============ 趣味事实 ============ */
         .facts-container {
             background: var(--white);
             border-radius: var(--radius-lg);
@@ -630,7 +616,164 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* ============ 页脚 ============ */
+        /* 游戏区域样式 (保持不变) */
+        #game-section {
+            background: rgba(200, 148, 96, 0.08);
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+        }
+        #game-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background: #fef9f0;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            cursor: none;
+            touch-action: none;
+            border: 2px dashed var(--golden);
+        }
+        .cat-character {
+            position: absolute;
+            font-size: 4rem;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+            pointer-events: none;
+            z-index: 2;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+        .cat-character.pounce {
+            animation: pounceAnim 0.3s ease-out;
+        }
+        @keyframes pounceAnim {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            30% { transform: translate(-50%, -50%) scale(1.3) rotate(10deg); }
+            60% { transform: translate(-50%, -50%) scale(0.9) rotate(-5deg); }
+            100% { transform: translate(-50%, -50%) scale(1) rotate(0); }
+        }
+        .cursor-toy {
+            position: absolute;
+            font-size: 2.2rem;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 3;
+            display: none;
+            filter: drop-shadow(0 0 4px gold);
+        }
+        .catch-text {
+            position: absolute;
+            color: var(--warm-brown);
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 4;
+            animation: floatUp 0.8s forwards;
+            pointer-events: none;
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-30px); }
+        }
+        #game-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        #reset-game {
+            padding: 0.5rem 1.8rem;
+            background: var(--soft-green);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        #reset-game:hover {
+            background: #5e8062;
+        }
+
+        /* 弹窗通用 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            text-align: center;
+        }
+        .modal-content h3 {
+            color: var(--dark-brown);
+            margin-bottom: 1rem;
+        }
+        .modal-content input,
+        .modal-content select {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+        }
+        .modal-content .btn-submit {
+            background: var(--warm-brown);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-medium);
+            background: none;
+            border: none;
+        }
+        .qr-code-img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin: 1rem auto;
+            display: block;
+            border: 1px solid #eee;
+            border-radius: var(--radius-sm);
+        }
+        .payment-info {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin: 0.5rem 0;
+        }
+
         .footer {
             background: var(--dark-brown);
             color: #e0d5c8;
@@ -650,7 +793,6 @@
             color: #e88b8b;
         }
 
-        /* ============ 响应式 ============ */
         @media (max-width: 900px) {
             .about-grid {
                 grid-template-columns: 1fr;
@@ -713,6 +855,12 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 1rem;
             }
+            #game-container {
+                height: 300px;
+            }
+            .cat-character {
+                font-size: 3rem;
+            }
         }
         @media (max-width: 480px) {
             .features-grid {
@@ -741,10 +889,16 @@
             .nav-logo {
                 font-size: 1.1rem;
             }
+            #game-container {
+                height: 280px;
+            }
+            #game-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
 
-        /* 遮罩层 */
-        .overlay {
+        .overlay-bg {
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.35);
@@ -753,7 +907,7 @@
             pointer-events: none;
             transition: opacity 0.35s ease;
         }
-        .overlay.active {
+        .overlay-bg.active {
             opacity: 1;
             pointer-events: auto;
         }
@@ -761,8 +915,7 @@
 </head>
 <body>
 
-    <!-- 遮罩层 -->
-    <div class="overlay" id="overlay"></div>
+    <div class="overlay-bg" id="overlay"></div>
 
     <!-- 导航栏 -->
     <nav class="navbar" id="navbar">
@@ -779,7 +932,8 @@
                 <li><a href="#gallery" class="nav-link">图库</a></li>
                 <li><a href="#care" class="nav-link">养护指南</a></li>
                 <li><a href="#facts" class="nav-link">趣味知识</a></li>
-                <li><a href="#contact" class="btn-nav nav-link">联系我们</a></li>
+                <li><a href="#game-section" class="nav-link">🎮 逗猫游戏</a></li>
+                <li><a href="#" class="btn-nav nav-link" id="open-order-modal">🐱 预定小猫</a></li>
             </ul>
         </div>
     </nav>
@@ -1004,7 +1158,60 @@
         </div>
     </section>
 
-    <!-- 页脚 -->
+    <!-- 逗猫小游戏 -->
+    <section class="section" id="game-section">
+        <div class="section-header">
+            <span class="section-icon">🐾</span>
+            <h2>逗猫小游戏</h2>
+            <span class="divider"></span>
+            <p>移动鼠标或手指，逗逗这只顽皮的缅因猫吧！</p>
+        </div>
+        <div id="game-container">
+            <div id="cat-character" class="cat-character">🐱</div>
+            <div id="cursor-toy" class="cursor-toy">🪶</div>
+        </div>
+        <div id="game-info">
+            <span>🐾 抓挠次数：<span id="score">0</span></span>
+            <button id="reset-game">🔄 重新开始</button>
+        </div>
+    </section>
+
+    <!-- 预定小猫弹窗（表单） -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-order-modal">✕</button>
+            <h3>🐱 预定您的小缅因猫</h3>
+            <p style="margin-bottom:1rem; color:var(--text-medium);">请选择喜欢的猫咪并填写信息</p>
+            <select id="kitten-select">
+                <option value="">-- 请选择猫咪花色 --</option>
+                <option value="棕色虎斑">棕色虎斑</option>
+                <option value="银白虎斑">银白虎斑</option>
+                <option value="纯黑缅因">纯黑缅因</option>
+                <option value="奶油色">奶油色</option>
+                <option value="红虎斑">红虎斑</option>
+                <option value="蓝灰色">蓝灰色</option>
+            </select>
+            <input type="text" id="customer-name" placeholder="您的姓名" required>
+            <input type="tel" id="customer-phone" placeholder="手机号码" required>
+            <button class="btn-submit" id="submit-order">提交订单 · 支付定金 ¥500</button>
+            <p style="font-size:0.75rem; color:var(--text-medium); margin-top:0.8rem;">* 定金可用于抵扣购猫款，支付后我们会与您联系</p>
+        </div>
+    </div>
+
+    <!-- 支付弹窗（支付宝收款码） -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-payment-modal">✕</button>
+            <h3>📱 支付宝扫码支付</h3>
+            <p class="payment-info">请使用支付宝扫描下方二维码支付定金</p>
+            <!-- ★ 替换为你的真实支付宝收款码图片链接 ★ -->
+            <img src="https://via.placeholder.com/200x200/FFFFFF/8B5E3C?text=请替换为你的支付宝收款码" alt="支付宝收款码" class="qr-code-img" id="qr-code-img">
+            <p style="font-weight:bold; color:var(--dark-brown); margin:0.5rem 0;">定金金额：<span style="font-size:1.3rem;">¥500.00</span></p>
+            <p style="font-size:0.8rem; color:var(--text-medium);">支付成功后请截图发送给客服确认</p>
+            <button class="btn-submit" id="close-payment-btn" style="margin-top:1rem;">我已完成支付</button>
+        </div>
+    </div>
+
     <footer class="footer" id="contact">
         <div class="footer-logo">🐾</div>
         <p>缅因猫舍 · 温柔的巨人</p>
@@ -1018,7 +1225,7 @@
     </footer>
 
     <script>
-        // ============ 导航栏滚动效果 ============
+        // ========== 导航与滚动 ==========
         const navbar = document.getElementById('navbar');
         const overlay = document.getElementById('overlay');
         const hamburger = document.getElementById('hamburger');
@@ -1034,21 +1241,18 @@
             updateActiveNav();
         });
 
-        // ============ 移动端菜单 ============
         function openMenu() {
             navLinks.classList.add('open');
             hamburger.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function closeMenu() {
             navLinks.classList.remove('open');
             hamburger.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
-
         hamburger.addEventListener('click', () => {
             if (navLinks.classList.contains('open')) {
                 closeMenu();
@@ -1056,18 +1260,13 @@
                 openMenu();
             }
         });
-
         overlay.addEventListener('click', closeMenu);
-
         allNavLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (navLinks.classList.contains('open')) {
-                    closeMenu();
-                }
+                if (navLinks.classList.contains('open')) closeMenu();
             });
         });
 
-        // ============ 导航高亮 ============
         function updateActiveNav() {
             const sections = document.querySelectorAll('section[id]');
             const scrollPos = window.scrollY + 150;
@@ -1087,7 +1286,7 @@
             });
         }
 
-        // ============ 趣味事实轮播 ============
+        // ========== 趣味事实 ==========
         const facts = [
             { emoji: '💧', text: '缅因猫是少数<strong>不怕水</strong>的猫咪品种之一！它们甚至喜欢玩水，这得益于其防水被毛。' },
             { emoji: '🎵', text: '缅因猫的叫声很特别——它们更多发出<strong>颤音和啾啾声</strong>，而不是典型的"喵喵"叫。' },
@@ -1098,11 +1297,9 @@
             { emoji: '👶', text: '缅因猫<strong>成熟较慢</strong>，通常需要3-5年才能完全发育成熟，比大多数猫晚得多。' },
             { emoji: '🎬', text: '在《哈利·波特》电影中，管理员费尔奇的猫<strong>洛丽丝夫人</strong>就是一只缅因猫！' },
         ];
-
         let currentFactIndex = -1;
         const factDisplay = document.getElementById('factDisplay');
         const factBtn = document.getElementById('factBtn');
-
         function showRandomFact() {
             let newIndex;
             do {
@@ -1117,19 +1314,199 @@
                 factDisplay.style.opacity = '1';
             }, 200);
         }
-
         factBtn.addEventListener('click', showRandomFact);
-        // 初始自动显示一个
         setTimeout(showRandomFact, 600);
 
-        // ============ 键盘导航 ============
+        // ========== 逗猫小游戏 ==========
+        const gameContainer = document.getElementById('game-container');
+        const catChar = document.getElementById('cat-character');
+        const cursorToy = document.getElementById('cursor-toy');
+        const scoreSpan = document.getElementById('score');
+        const resetBtn = document.getElementById('reset-game');
+
+        let catPos = { x: 200, y: 200 };
+        let cursorPos = { x: 100, y: 100 };
+        let score = 0;
+        let catVelocity = { x: (Math.random() - 0.5) * 2, y: (Math.random() - 0.5) * 2 };
+        let isChasing = false;
+        let animationFrameId = null;
+
+        function resetGame() {
+            score = 0;
+            scoreSpan.textContent = '0';
+            catPos = { x: gameContainer.clientWidth / 2, y: gameContainer.clientHeight / 2 };
+            catVelocity = { x: (Math.random() - 0.5) * 2, y: (Math.random() - 0.5) * 2 };
+            cursorToy.style.display = 'none';
+        }
+
+        function updateCatPosition() {
+            const containerRect = gameContainer.getBoundingClientRect();
+            const containerW = containerRect.width;
+            const containerH = containerRect.height;
+            const dx = cursorPos.x - catPos.x;
+            const dy = cursorPos.y - catPos.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const chaseThreshold = 120;
+            if (distance < chaseThreshold && distance > 10) {
+                isChasing = true;
+                const angle = Math.atan2(dy, dx);
+                const speed = Math.min(0.8 * (1 + (chaseThreshold - distance) / 30), 5);
+                catVelocity.x = Math.cos(angle) * speed;
+                catVelocity.y = Math.sin(angle) * speed;
+            } else if (distance <= 10 && isChasing) {
+                score++;
+                scoreSpan.textContent = score;
+                catChar.classList.add('pounce');
+                setTimeout(() => catChar.classList.remove('pounce'), 300);
+                const catchText = document.createElement('div');
+                catchText.className = 'catch-text';
+                catchText.textContent = '抓到了！';
+                catchText.style.left = catPos.x + 'px';
+                catchText.style.top = catPos.y - 20 + 'px';
+                gameContainer.appendChild(catchText);
+                setTimeout(() => catchText.remove(), 800);
+                catPos.x = Math.random() * (containerW - 60) + 30;
+                catPos.y = Math.random() * (containerH - 60) + 30;
+                catVelocity.x = (Math.random() - 0.5) * 3;
+                catVelocity.y = (Math.random() - 0.5) * 3;
+                isChasing = false;
+            } else {
+                isChasing = false;
+                if (Math.random() < 0.02) {
+                    catVelocity.x = (Math.random() - 0.5) * 3;
+                    catVelocity.y = (Math.random() - 0.5) * 3;
+                }
+            }
+            catPos.x += catVelocity.x;
+            catPos.y += catVelocity.y;
+            if (catPos.x < 30 || catPos.x > containerW - 30) {
+                catVelocity.x *= -0.8;
+                catPos.x = Math.min(Math.max(catPos.x, 30), containerW - 30);
+            }
+            if (catPos.y < 30 || catPos.y > containerH - 30) {
+                catVelocity.y *= -0.8;
+                catPos.y = Math.min(Math.max(catPos.y, 30), containerH - 30);
+            }
+            catChar.style.left = catPos.x + 'px';
+            catChar.style.top = catPos.y + 'px';
+        }
+
+        function gameLoop() {
+            updateCatPosition();
+            animationFrameId = requestAnimationFrame(gameLoop);
+        }
+
+        function updateCursorPosition(clientX, clientY) {
+            const rect = gameContainer.getBoundingClientRect();
+            cursorPos.x = clientX - rect.left;
+            cursorPos.y = clientY - rect.top;
+            cursorToy.style.display = 'block';
+            cursorToy.style.left = cursorPos.x + 'px';
+            cursorToy.style.top = cursorPos.y + 'px';
+        }
+
+        gameContainer.addEventListener('mousemove', (e) => {
+            e.preventDefault();
+            updateCursorPosition(e.clientX, e.clientY);
+        });
+        gameContainer.addEventListener('mouseleave', () => {
+            cursorToy.style.display = 'none';
+            isChasing = false;
+        });
+        gameContainer.addEventListener('mouseenter', (e) => {
+            updateCursorPosition(e.clientX, e.clientY);
+        });
+        gameContainer.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            updateCursorPosition(touch.clientX, touch.clientY);
+        }, { passive: false });
+        gameContainer.addEventListener('touchend', () => {
+            cursorToy.style.display = 'none';
+            isChasing = false;
+        });
+        gameContainer.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            updateCursorPosition(touch.clientX, touch.clientY);
+        });
+
+        resetBtn.addEventListener('click', resetGame);
+        resetGame();
+        animationFrameId = requestAnimationFrame(gameLoop);
+        window.addEventListener('resize', () => {
+            const containerW = gameContainer.clientWidth;
+            const containerH = gameContainer.clientHeight;
+            catPos.x = Math.min(catPos.x, containerW - 30);
+            catPos.y = Math.min(catPos.y, containerH - 30);
+        });
+
+        // ========== 预定与支付弹窗逻辑 ==========
+        const orderModal = document.getElementById('order-modal');
+        const paymentModal = document.getElementById('payment-modal');
+        const openOrderBtn = document.getElementById('open-order-modal');
+        const closeOrderBtn = document.getElementById('close-order-modal');
+        const submitOrderBtn = document.getElementById('submit-order');
+        const closePaymentBtn = document.getElementById('close-payment-modal');
+        const closePaymentDone = document.getElementById('close-payment-btn');
+
+        function openModal(modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        openOrderBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(orderModal);
+        });
+        closeOrderBtn.addEventListener('click', () => closeModal(orderModal));
+        orderModal.addEventListener('click', (e) => {
+            if (e.target === orderModal) closeModal(orderModal);
+        });
+
+        submitOrderBtn.addEventListener('click', () => {
+            const kitten = document.getElementById('kitten-select').value;
+            const name = document.getElementById('customer-name').value.trim();
+            const phone = document.getElementById('customer-phone').value.trim();
+            if (!kitten) {
+                alert('请选择一只猫咪花色');
+                return;
+            }
+            if (!name) {
+                alert('请输入您的姓名');
+                return;
+            }
+            if (!phone) {
+                alert('请输入手机号码');
+                return;
+            }
+            // 关闭订单弹窗，打开支付弹窗
+            closeModal(orderModal);
+            openModal(paymentModal);
+        });
+
+        closePaymentBtn.addEventListener('click', () => closeModal(paymentModal));
+        paymentModal.addEventListener('click', (e) => {
+            if (e.target === paymentModal) closeModal(paymentModal);
+        });
+        closePaymentDone.addEventListener('click', () => {
+            closeModal(paymentModal);
+            alert('感谢您的预定！我们会尽快与您联系。');
+        });
+
+        // 键盘 ESC 关闭弹窗
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navLinks.classList.contains('open')) {
-                closeMenu();
+            if (e.key === 'Escape') {
+                if (paymentModal.classList.contains('active')) closeModal(paymentModal);
+                else if (orderModal.classList.contains('active')) closeModal(orderModal);
+                else if (navLinks.classList.contains('open')) closeMenu();
             }
         });
 
-        // ============ 初始检查 ============
         updateActiveNav();
     </script>
 </body>
